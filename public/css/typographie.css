@@ -1,0 +1,115 @@
+/************************************************************
+	File: typographie.css
+	Desc: 
+*************************************************************/
+/*
+ *	Common Styles
+ */
+body {
+	font-family: "arial", "lucida grande", "tahoma", "verdana", "arial", sans-serif;	
+	color: #444444;
+	font-weight: 400;
+}
+
+hr {
+	height: 1px;
+	background-color: #E8E8E8;
+	margin: 10px 0;
+}
+
+ul {
+    list-style-position: inside; 
+}
+
+ul.wide li {
+    margin-bottom: 10px;   
+}
+
+ul li {
+	list-style-type: square;	
+}
+#greeting {
+	font-size: 27px;
+	text-shadow: #c0c0c0 1px 1px 0px;
+	white-space: normal;
+	text-align: center;	
+}
+
+a.greetlink {
+	text-align: right;
+	font-size: 14px;	
+	display: block;
+}
+
+h1 {
+	background-color: #F5F5F5;
+	border-bottom: 1px solid #E5E5E5;
+	color: #333333;
+	font-size: 24px;
+	padding: 2px 8px;
+}
+h1 + h3 {
+	font-size: 12px;	
+	padding: 3px 8px;
+	color: #009900;
+	font-style: italic;
+	font-weight: normal;
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+p {
+	padding: 10px;
+	border-bottom: 1px solid #E8E8E8;	
+	/* white-space: pre-wrap; */
+}
+/* Nachbar Selektor 
+#content_wrapper p + p {
+	margin-top: 10px;	
+} */
+
+p > code
+{
+	margin: 0px;	
+}
+
+code {
+	color: #333333;
+	font-size: 14px;
+	font-family: Courier;
+	background-color: #F5F5F5;
+	border-left: 2px solid #222222;
+	margin: 10px;
+	display: block;
+	padding: 10px;
+	white-space: pre-wrap;
+}
+
+.description {
+	background-color: #F5F5F5;
+	border: 1px solid #cccccc;
+	color: #333333;
+	font-size: 14px;
+	padding: 10px;
+	width: 600px;
+	margin: 10px;
+	text-shadow: #c0c0c0 1px 0px 0px;	
+}
+
+/************************************************************
+	Link Styles 
+*************************************************************/
+a {
+	color: #376EDB;
+	text-decoration: none;	
+}
+a:hover {
+	/* color: #3C6;	*/
+}
+
+/* direkter Nachfahre */
+body > p {
+	font-style: italic;
+}

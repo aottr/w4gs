@@ -1,0 +1,46 @@
+label, input[type="text"]{
+    display: inline-block;
+}
+
+label
+{
+    margin-right: 5px;
+}
+
+.field{
+    width: 100%;
+    overflow: auto;
+    margin: 5px 0px;
+}
+
+input[type=text], input[type=password], select
+{
+    margin: 2px;
+    padding: 5px;
+    border: 1px solid #CCCCCC;
+}
+
+input[type=text]:focus, input[type=password]:focus
+{
+    background-color: #ccd3dd;
+    border-color: #98a7ba;
+}
+
+input[type=submit], button {
+    margin: 2px;
+    padding: 8px;
+    background-color: #EFEFEF;
+    border: 1px solid #CCCCCC;
+   
+    
+    transition: all 0.5s ease-in; /* explorer 10 */
+    -webkit-transition: all 0.5s ease-in; /* chrome & safari */
+    -moz-transition: all 0.5s ease-in; /* firefox */
+    -o-transition: all 0.5s ease-in; /* opera */
+}
+
+input[type=submit]:hover, button:hover {
+    background-color: #EEEEEE;  
+    border-radius: 3px;
+    cursor: pointer;
+}

@@ -13,7 +13,7 @@
 /**
  * Description of form
  *
- * @author Dustin Kröger
+ * @author staubrein <me@staubrein.com>
  */
 class Form {
     

@@ -1,21 +1,15 @@
 <?php
-
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of auth
  *
- * @author Dustin Kröger
+ * @author staubrein <me@staubrein.com>
  */
 class Auth {
     
     public static function handleLogin() {
                 
-        @session_start();
-        if(!isset($_SESSION['loggedIn'])) {
+        Session::init();
+        if(Session::get('loggedIn')) {
             
             session_destroy();
             header('Location: ' . BASE_URL . 'login');

@@ -4,17 +4,17 @@ class PageController extends Controller
 {
 	function index()
 	{
-		/*$this->view->render(true);
-		$this->render = FALSE;*/
-		$this->set("content", "Willkommen bei _wags :D");
+		$this->set("content", "Status OK");
 	}
 
 	function imprint() {
 
-		$this->set("name", "Dustin Kr&ouml;ger");
-		$this->set("street", "Heinrichstr.");
-		$this->set("streetnumber", "51");
-		$this->set("postalcode", "04317");
-		$this->set("city", "Leipzig");
+		$storage = new JSONStorage();
+		$page_data = $storage->select("page", ["title" => "Imprint"]);
+
+		$this->set("name", $page_data["name"]);
+		$this->set("street", $page_data["street"]);
+		$this->set("postalcode", $page_data["postalcode"]);
+		$this->set("city", $page_data["city"]);
 	}
 }

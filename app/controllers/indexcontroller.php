@@ -4,8 +4,7 @@ class IndexController extends Controller
 {
 	function index()
 	{
-		/*$this->view->render(true);
-		$this->render = FALSE;*/
-		$this->set("content", "Willkommen bei _wags :D");
+		$this->set("doctitle", "Welcome");
+		$this->set("content", "Status OK");
 	}
 }

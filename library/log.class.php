@@ -1,8 +1,15 @@
 <?php
+
 /**
- * Description of log
+ * File: log.class.php
  *
- * @author me@staubrein.com
+ * Einfache Klasse zum Sichern von Log-Informationen
+ * 
+ * Dem Konstruktor wird der Name der Log-Datei übergeben, 
+ * unter dem sie abgespeichert/ergänzt wird.
+ * Der Pfad kann nachträglich geändert werden.
+ *
+ * @author staubrein <me@staubrein.com>
  */
 class Log {
    
@@ -22,5 +29,3 @@ class Log {
         fclose($fp) or die ("Error closing file!");
     }
 }
-
-?>

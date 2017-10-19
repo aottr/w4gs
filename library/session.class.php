@@ -1,10 +1,18 @@
 <?php
 
+/**
+ * File: session.class.php
+ *
+ * SessionHandler zum verkürzten Arbeiten mit Sessions.
+ *
+ * @author Dustin Kroeger - @aervos
+ */
+
 class Session
 {
 	public static function init()
 	{
-		session_start();
+		@session_start();
 	}
 
 	public static function set($key, $value)
@@ -16,8 +24,8 @@ class Session
 	{
 		if(isset($_SESSION[$key]))
 			return $_SESSION[$key];
-        else
-            return FALSE;
+		else
+			return NULL;
 	}
 
 	public static function destroy()

@@ -1,0 +1,198 @@
+@font-face {
+	font-family: 'wagicon';
+	src:url('../fonts/wagicon.eot?q0gre');
+	src:url('../fonts/wagicon.eot?#iefixq0gre') format('embedded-opentype'),
+		url('../fonts/wagicon.woff?q0gre') format('woff'),
+		url('../fonts/wagicon.ttf?q0gre') format('truetype'),
+		url('../fonts/wagicon.svg?q0gre#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'wagicon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-uni31:before {
+	content: "\31";
+}
+
+.icon-uni35:before {
+	content: "\35";
+}
+
+.icon-uni36:before {
+	content: "\36";
+}
+
+.icon-uni37:before {
+	content: "\37";
+}
+
+.icon-uni44:before {
+	content: "\44";
+}
+
+.icon-uni45:before {
+	content: "\45";
+}
+
+.icon-uni57:before {
+	content: "\57";
+}
+
+.icon-uni60:before {
+	content: "\60";
+}
+
+.icon-uni63:before {
+	content: "\63";
+}
+
+.icon-uni64:before {
+	content: "\64";
+}
+
+.icon-uni65:before {
+	content: "\65";
+}
+
+.icon-uni66:before {
+	content: "\66";
+}
+
+.icon-uni67:before {
+	content: "\67";
+}
+
+.icon-uni68:before {
+	content: "\68";
+}
+
+.icon-uni6F:before {
+	content: "\6f";
+}
+
+.icon-uni71:before {
+	content: "\71";
+}
+
+.icon-uni74:before {
+	content: "\74";
+}
+
+.icon-uni76:before {
+	content: "\76";
+}
+
+.icon-uniC7:before {
+	content: "\c7";
+}
+
+.icon-uniC9:before {
+	content: "\c9";
+}
+
+.icon-uniD1:before {
+	content: "\d1";
+}
+
+.icon-uniD6:before {
+	content: "\d6";
+}
+
+.icon-uniDC:before {
+	content: "\dc";
+}
+
+.icon-uniDD:before {
+	content: "\dd";
+}
+
+.icon-uniE3:before {
+	content: "\e3";
+}
+
+.icon-uniE4:before {
+	content: "\e4";
+}
+
+.icon-uniE5:before {
+	content: "\e5";
+}
+
+.icon-uniE7:before {
+	content: "\e7";
+}
+
+.icon-uniE8:before {
+	content: "\e8";
+}
+
+.icon-uniE9:before {
+	content: "\e9";
+}
+
+.icon-uniEA:before {
+	content: "\ea";
+}
+
+.icon-uniEB:before {
+	content: "\eb";
+}
+
+.icon-uniEC:before {
+	content: "\ec";
+}
+
+.icon-uniED:before {
+	content: "\ed";
+}
+
+.icon-uniF4:before {
+	content: "\f4";
+}
+
+.icon-uni100:before {
+	content: "\100";
+}
+
+.icon-uni101:before {
+	content: "\101";
+}
+
+.icon-uni102:before {
+	content: "\102";
+}
+
+.icon-uni103:before {
+	content: "\103";
+}
+
+.icon-uni11E:before {
+	content: "\11e";
+}
+
+.icon-uni120:before {
+	content: "\120";
+}
+
+.icon-uni13D:before {
+	content: "\13d";
+}
+
+.icon-alone {
+
+  	display: inline-block; /* Fix for clickability issue in WebKit */
+  	font-size: 1.3em;
+}

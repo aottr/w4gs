@@ -13,7 +13,7 @@
 /**
  * Description of form
  *
- * @author staubrein <me@staubrein.com>
+ * @author Dustin Kröger
  */
 class Form {
     
@@ -59,6 +59,9 @@ class Form {
         
         if(!$field)
             return FALSE;
+           
+        if(!isset($_POST[$field]))
+        	return NULL;
             
         $this->_postData[$field] = $_POST[$field];
         $this->_currentItem = $field;
@@ -89,12 +92,14 @@ class Form {
       * @param string $arg A property to validate against
       * @return \Form
       */
-    public function val($typeOfValidator, $arg = NULL) {
+    public function val($typeOfValidator, $arg = NULL, $name = NULL) {
         
         if($arg == NULL)
             $error = $this->_val->{$typeOfValidator}($this->_postData[$this->_currentItem]);
-        else
+        else if($name == NULL && $arg != NULL)
             $error = $this->_val->{$typeOfValidator}($this->_postData[$this->_currentItem], $arg);
+        else
+        	$error = $this->_val->{$typeOfValidator}($this->_postData[$this->_currentItem], $arg, $name);
         
         if($error) {
             
@@ -117,7 +122,9 @@ class Form {
         {
             $str = '';
             foreach ($this->_error as $key => $value) {
-                $str .= $key . ' => ' . $value . "\n";
+                //$str .= $key . ' => ' . $value . "\n";
+                $str .= $value . "\n";
+
             }
             
             throw new Exception($str);

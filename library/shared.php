@@ -1,6 +1,6 @@
 <?php
 
-/** Check if environment is developed and display errors * */
+/** Check if environment is developed and display errors **/
 function setReporting() {
     if (DEVELOPMENT_ENVIRONMENT) {
         error_reporting(E_ALL);
@@ -44,47 +44,62 @@ function unregisterGlobals() {
 
 /** Main Call Function * */
 function callHook() {
+
+	// SessionHandler starten
     Session::init();
 
     global $url;
     
+    // ErrorLogHandler starten
     $errorlog = new Log("application_error");
 	
+    // wenn '/'am Ende des Strings vorhanden, entferne diese
     $url = rtrim($url, '/');
 
-    $urlArray = array();
-
+	// Remove all characters except letters, digits and $-_.+!*'(),{}|\\^~[]`<>#%";/?:@&=.
     $url = filter_var($url, FILTER_SANITIZE_URL);
 
-    $urlArray = explode("/", $url);
+    // splitte die URL in Teile, getrennt durch '/'
+    $urlArray = array();
+    $urlArray = explode('/', $url);
    
-	
+	/**
+	 *	Aufbau der URL
+	 *	/ Controller / Funktion / Parameter1 / Parameter2
+	 */
+	 
 	$controller = $urlArray[0];
-
+	
+	// entfernt erstes Element (Controller)
     array_shift($urlArray);
 
+	// wenn das Array nun leer ist, setze action (Funktion) auf index, ansonsten übergebener Wert
     $action = !empty($urlArray) ? $urlArray[0] : 'index';
 
+    // entfernt erstes Element (Funktion)
     array_shift($urlArray);
     $queryString = $urlArray;
-
-    $controllerName = $controller;
-    $controller = ucwords($controller);
-
+    
+	$controllerName = $controller;
+	// Ersten Buchstaben vergrößern: main -> MainController
+    $controller = ucfirst($controller);
     $controller .= 'Controller';
+    
 
+	/* Dispatcher ist der ErrorController (norm 404) wenn Controller nicht vorhanden
     if (!class_exists($controller)) {
         $dispatch = new ErrorController(true);
         return false;
-    }
+    }*/
 
-    $dispatch = new $controller();
+	// Ansonsten ist Dispatcher neues Objekt des Controllers
+    $dispatch = new $controller($controllerName, $action);
 
     if (method_exists($controller, $action)) {
         // calls the $dispatch->$action method with $queryString as arguments
         call_user_func_array(array($dispatch, $action), $queryString);
     } else {
-        echo Language::$not_found_error['action'];
+        //echo Language::$not_found_error['action'];
         $errorlog->write("Action not found.");
         exit;
     }
@@ -94,12 +109,19 @@ function callHook() {
 function __autoload($className) {
 
     if (file_exists(ROOT . DS . 'library' . DS . strtolower($className) . '.class.php')) {
+    
         require_once(ROOT . DS . 'library' . DS . strtolower($className) . '.class.php');
+        
     } else if (file_exists(ROOT . DS . 'application' . DS . 'controllers' . DS . strtolower($className) . '.php')) {
+    
         require_once(ROOT . DS . 'application' . DS . 'controllers' . DS . strtolower($className) . '.php');
+        
     } else if (file_exists(ROOT . DS . 'application' . DS . 'models' . DS . strtolower($className) . '.php')) {
+    
         require_once(ROOT . DS . 'application' . DS . 'models' . DS . strtolower($className) . '.php');
+        
     } else {
+    
         /* Error Generation Code Here */
     }
 }

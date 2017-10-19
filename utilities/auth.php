@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Description of auth
  *
@@ -9,13 +10,33 @@ class Auth {
     public static function handleLogin() {
                 
         Session::init();
-        if(Session::get('loggedIn')) {
+
+		//Session::set("uid", 1);
+		
+        if(Session::get("uid") == NULL) {
             
-            session_destroy();
-            header('Location: ' . BASE_URL . 'login');
+            Session::destroy();
+            header('Location: ' . BASE_URL . 'user/login');
             exit;
-	}
+		}
+    }
+    
+    public static function handlePermission($level) {
+                
+        Session::init();
+
+		//Session::set("uid", 1);
+		
+        if(Session::get("plvl") == NULL) {
+            
+            Session::destroy();
+            header('Location: ' . BASE_URL . 'user/login');
+            exit;
+		
+		} else if(Session::get("plvl") > $level) {
+			
+			header('Location: ' . BASE_URL . 'user/login');
+            exit;
+		}
     }
 }
-
-?>

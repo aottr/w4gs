@@ -1,0 +1,104 @@
+/*@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) { */
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-width : 600px) { 
+
+	.table {
+		
+		display: block;
+	}
+	
+	.tcenter {
+		
+		display: list-item;
+		list-style: none;
+	}
+	
+	.profilepicarea img {
+	
+		max-width: 90%;
+		max-height: none;
+	}
+	
+	.profilepicarea .right {
+		
+		text-align: center;
+	}	
+
+	#frame {
+		
+		width: 100%;
+		margin: 0;
+	}
+	
+	nav {
+		
+		text-align: left;
+	}
+	
+    nav a {
+	    
+	    display: block;
+	    padding: 10px 20px;
+    }
+    
+    nav span:after {
+	    
+	    font-family: sans-serif;
+    }
+    
+    nav .ndashboard:after { 
+	    
+	    content: " Dashboard";
+    }
+    nav .nprofile:after {
+
+	    content: " Mein Profil";
+    }
+    nav .nfriends:after {
+	   
+	    content: " Freunde";
+    }
+    nav .nmessages:after {
+
+	    content: " Nachichten";
+    }
+    nav .nsettings:after {
+
+	    content: " Einstellungen";
+    }
+    nav .nlogin:after {
+
+	    content: " Anmelden";
+    }
+    nav .nlogout:after {
+
+	    content: " Abmelden";
+    }
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+/* Styles */
+}
+
+/* Desktops and laptops ----------- */
+@media only screen 
+and (min-width : 1424px) {
+
+    #frame { 
+    
+    	width: 1200px;
+    }
+}
+
+/* Large screens ----------- */
+@media only screen 
+and (min-width : 1824px) {
+/* Styles */
+}

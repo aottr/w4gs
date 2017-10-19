@@ -1,14 +1,9 @@
 <?php
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /**
  * Description of val
  *
- * @author Dustin Kröger
+ * @author staubrein <me@staubrein.com>
  */
 class Validate {
     
@@ -16,18 +11,25 @@ class Validate {
         ;
     }
     
-    public function minlength($data, $arg) {
+    public function minlength($data, $arg, $name = "") {
         
         if(strlen($data) < $arg) {
             
-            return "Your string can only be $arg long.";
+            if(empty($name))
+            	return "Die Zeichenkette muss mindestens $arg Zeichen lang sein.";
+            else
+            	return $name . " ist zu kurz. Mindestzeichenzahl: $arg";
+            
         }
     }
-    public function maxlength($data, $arg) {
+    public function maxlength($data, $arg, $name = "") {
         
         if(strlen($data) > $arg) {
             
-            return "Your string can only be $arg long.";
+            if(empty($name))
+            	return "Die Zeichenkette darf h&ooum;chstens $arg Zeichen lang sein.";
+            else
+            	return $name . " ist zu lang. Maximal $arg Zeichen.";
         }
     }
     
@@ -35,7 +37,7 @@ class Validate {
         
         if(!ctype_digit($data)) {
             
-            return "Your string must be a digit.";
+            return "Der eingegebene Wert ist keine Zahl.";
         }
     }
     

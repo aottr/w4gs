@@ -29,11 +29,11 @@ class View {
         
         ob_start();
         if ($doNotRenderHeader)
-            require_once ( ROOT . DS . 'application' . DS . 'views' . DS . $this->controller . DS . $this->action . ".tpl");
+            require_once ( ROOT . DS . 'app' . DS . 'views' . DS . $this->controller . DS . $this->action . ".tpl");
         else {
-            require_once ( ROOT . DS . 'application' . DS . 'views' . DS . "overall_header.tpl");
-            require_once ( ROOT . DS . 'application' . DS . 'views' . DS . $this->controller . DS . $this->action . ".tpl");
-            require_once ( ROOT . DS . 'application' . DS . 'views' . DS . "overall_footer.tpl");
+            require_once ( ROOT . DS . 'app' . DS . 'views' . DS . "overall_header.tpl");
+            require_once ( ROOT . DS . 'app' . DS . 'views' . DS . $this->controller . DS . $this->action . ".tpl");
+            require_once ( ROOT . DS . 'app' . DS . 'views' . DS . "overall_footer.tpl");
         }
         
         $output = ob_get_contents();

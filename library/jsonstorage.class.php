@@ -46,6 +46,10 @@ class JSONStorage {
             if($add_entry)
                 $solution[$entry_key] = $entry;
         }
+
+        if(count($solution) == 1)
+            $solution = $solution[0];
+
         return $solution;
     }
 
@@ -100,7 +104,7 @@ class JSONStorage {
         if(!file_exists($this->_path . $object))
             return [];
         
-        return json_decode(file_get_contents($object), true);
+        return json_decode(file_get_contents( $this->_path . $object), true);
     }
 
     private function assoc_array_to_json_object($object_name, $assoc_array) {

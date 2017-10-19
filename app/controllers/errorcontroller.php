@@ -8,7 +8,7 @@ class ErrorController extends Controller {
 
         parent::__construct();
 
-        $this->view->title = 'Fehler!';
+        $this->view->title = 'Error 404!';
         $this->view->msg = 'This page does not exist.';
         $this->view->render('error/index');
     }

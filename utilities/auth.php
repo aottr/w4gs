@@ -13,7 +13,7 @@ class Auth {
 
 		//Session::set("uid", 1);
 		
-        if(Session::get("uid") == NULL) {
+        if(!Session::get("uid")) {
             
             Session::destroy();
             header('Location: ' . BASE_URL . 'user/login');
@@ -27,7 +27,7 @@ class Auth {
 
 		//Session::set("uid", 1);
 		
-        if(Session::get("plvl") == NULL) {
+        if(!Session::get("plvl")) {
             
             Session::destroy();
             header('Location: ' . BASE_URL . 'user/login');

@@ -27,7 +27,8 @@ class JSONStorage {
      */
     public function setPath($path) {
 
-        $this->_path = $path;
+        // adds the Directory Separator at the end of the path if not present
+        $this->_path = substr($path, -1) == DS ? $path : $path . DS;
     }
 
     /**

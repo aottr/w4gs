@@ -4,6 +4,7 @@
  * Class Database
  * Easy and more secure way to create a database connection
  * Supports select, insert, update and delete Data manipulation
+ * @author staubrein <me@staubrein.com>
  */
 class Database extends PDO {
 

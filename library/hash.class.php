@@ -1,19 +1,27 @@
 <?php
 
+/**
+ * Class Hash
+ * Simple class to generate Hashes
+ * @author staubrein <me@staubrein.com>
+ * @version 0.2
+ * @todo add more functionality
+ */
 class Hash
 {
 
 	/**
-	 *
-	 * @param string $algo The algorithm (md5, sha1, whirlpool, ect)
-	 * @param string $data The data to encode
-	 * @param string $salt The salt (This should be the same throughout the system probably)
-	 * @return string The hashed/salted data
+	 * Static function to create a Hash using a specified algorithm
+	 * @param string $algorithm  (md5, sha512, ect)
+	 * @param string $data Data to encode
+	 * @param string $salt salt (e.g. specified in the config file)
+	 * @return string hashed/salted data
 	 */
-	public static function create($algo, $data, $salt)
+	public static function create($algorithm, $data, $salt)
 	{
-		$context = hash_init($algo, HASH_HMAC, $salt);
+		$context = hash_init($algorithm, HASH_HMAC, $salt);
 		hash_update($context, $data);
+
 		return hash_final($context);
 	}
 }

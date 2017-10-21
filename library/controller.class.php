@@ -44,8 +44,8 @@ class Controller
     /**
      * Export variables to the view
      * @example set('content', $some_text); generates a Variable named $content accessible in the view
-     * @param $name string name of the variable
-     * @param $value mixed value of the variable
+     * @param string $name of the variable
+     * @param mixed $value of the variable
      */
     function set($name, $value) {
 		

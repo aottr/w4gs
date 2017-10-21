@@ -1,13 +1,26 @@
 <?php
 
+/**
+ * Class PageController
+ * Controller to generate 'static' pages.
+ * @author staubrein <me@staubrein.com>
+ */
 class PageController extends Controller
 {
-	function index()
+    /**
+     *  Index Page for route: /page/
+     * @todo Maybe Table od Contents?
+     */
+    function index()
 	{
 		$this->set("content", "Status OK");
 	}
 
-	function imprint() {
+    /**
+     *  Generates an Imprint Page
+     *  uses address data stored in a json db
+     */
+    function imprint() {
 
 		$storage = new JSONStorage();
 		$page_data = $storage->select("page", ["title" => "Imprint"]);

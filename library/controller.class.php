@@ -1,34 +1,63 @@
 <?php
 
+/**
+ * Class Controller
+ * Abstract controller class with main functionality for all controllers.
+ */
 class Controller
 {
-	protected $controller;
-	protected $action;
-	protected $model;
-	protected $view;
-	
-	public $doNotRenderHeader;
-	public $render;
-	
-	function __construct($controller, $action)
+
+    protected $_controller;
+    protected $_action;
+    protected $_model;
+    protected $_view;
+
+    /**
+     * @var bool Specifies if the view should be rendered without header (std. false)
+     */
+    public $doNotRenderHeader;
+
+    /**
+     * @var bool Specifies if the view should be rendered. (std. true)
+     */
+    public $render;
+
+    /**
+     * Controller constructor.
+     * Generates the Controller
+     * doNotRenderHeader FALSE,
+     * render TRUE
+     * @param $controller
+     * @param $action
+     */
+    function __construct($controller, $action)
 	{
-		$this->controller = $controller;
-		$this->action = $action;
+		$this->_controller = $controller;
+		$this->_action = $action;
 		
 		$this->doNotRenderHeader = FALSE;
 		$this->render = TRUE;
 		
-		$this->view = new View($controller, $action);
+		$this->_view = new View($controller, $action);
 	}
-	
-	function set($name, $value) {
+
+    /**
+     * Export variables to the view
+     * @example set('content', $some_text); generates a Variable named $content accessible in the view
+     * @param string $name of the variable
+     * @param mixed $value of the variable
+     */
+    function set($name, $value) {
 		
-		$this->view->set($name, $value);
+		$this->_view->set($name, $value);
 	}
-	
-	function __destruct() {
+
+    /**
+     * Destructor renders the view automatically
+     */
+    function __destruct() {
 		
 		if($this->render)
-			$this->view->render($this->doNotRenderHeader);
+			$this->_view->render($this->doNotRenderHeader);
 	}
 }

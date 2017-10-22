@@ -17,7 +17,7 @@ class Auth {
             
             Session::destroy();
             header('Location: ' . BASE_URL . 'user/login');
-            exit;
+            exit(30); // not logged in
 		}
     }
     
@@ -36,7 +36,7 @@ class Auth {
 		} else if(Session::get("plvl") > $level) {
 			
 			header('Location: ' . BASE_URL . 'user/login');
-            exit;
+            exit(31); // Insufficient user rights
 		}
     }
 }

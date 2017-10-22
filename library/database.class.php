@@ -21,7 +21,7 @@ class Database extends PDO {
         try {
             parent::__construct($dbtype . ':host=' . $dbhost . ';dbname=' . $dbname, $dbuser, $pass);
         } catch(Exception $ex) {
-            die("Could not connect to the configured database: '$dbname'.");
+            exit(155);
         }
         //parent::setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTIONS);
     }

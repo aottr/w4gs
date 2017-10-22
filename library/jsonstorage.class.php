@@ -48,7 +48,7 @@ class JSONStorage {
         }
 
         if(count($solution) == 1)
-            $solution = $solution[0];
+            $solution = array_values($solution)[0];;
 
         return $solution;
     }

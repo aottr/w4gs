@@ -4,6 +4,4 @@ php:
   - 5.5
   - 7.0
 
-before_script: composer install
-
 script: phpunit tests/test.php

@@ -20,12 +20,11 @@ class Log {
     }
     
     function write($message) {
-        $fp = fopen($this->path, "a+") or die 
-                ("Error opening file in write mode!");
+        $fp = fopen($this->path, "a+") or exit(50);
         
         $message = date("Y-m-d H:i:s: ") . $message . "\n";
         
         fputs($fp, $message);
-        fclose($fp) or die ("Error closing file!");
+        fclose($fp) or exit(52);
     }
 }

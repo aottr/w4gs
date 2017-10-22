@@ -101,7 +101,7 @@ function callHook() {
     } else {
         //echo Language::$not_found_error['action'];
         $errorlog->write("Action not found.");
-        exit;
+        exit(44);
     }
 }
 

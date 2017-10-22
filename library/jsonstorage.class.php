@@ -72,7 +72,7 @@ class JSONStorage {
 
         // if only one result is present, generate one-dimensional array
         if(count($solution) == 1)
-            $solution = $solution[0];
+            $solution = array_values($solution)[0];
 
         return $solution;
     }

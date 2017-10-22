@@ -20,11 +20,11 @@ class Log {
     }
     
     function write($message) {
-        $fp = fopen($this->path, "a+") or exit(50);
+        $fstream = fopen($this->path, "a+") or exit(50);
         
         $message = date("Y-m-d H:i:s: ") . $message . "\n";
         
-        fputs($fp, $message);
-        fclose($fp) or exit(52);
+        fputs($fstream, $message);
+        fclose($fstream) or exit(52);
     }
 }

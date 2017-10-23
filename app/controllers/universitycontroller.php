@@ -4,6 +4,9 @@ class UniversityController extends Controller
 {
 	private $_storage;
 
+	/**
+	 * Creates a new instance with a JSONStorage
+	 */
 	function __construct($controller, $action)
 	{
 		$this->_storage = new JSONStorage();
@@ -19,11 +22,20 @@ class UniversityController extends Controller
 		$this->set('modules', $modules);
 	}
 
-	function module($module) {
+	/**
+	 * Show information about a specific module
+	 * @param string $module module abbreviation
+	 */
+	function module($module = '') {
 
 		$module_data = $this->_storage->select('university', ['abbr' => $module]);
+
+		if(!count($module_data) || empty($module)) {
+
+			header('Location: ' . BASE_URL . 'university');
+            exit(44);
+		}
+
 		$this->set('module', $module_data);
 	}
-
-
 }

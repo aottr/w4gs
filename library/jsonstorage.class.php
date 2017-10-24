@@ -17,7 +17,7 @@ class JSONStorage {
      */
     public function __construct() {
         
-       $this->_path = ROOT . DS . 'app' . DS . 'db' . DS;
+       $this->_path = JSONDB_PATH;
     }
 
 

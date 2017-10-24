@@ -11,6 +11,7 @@ class Controller
     protected $_action;
     protected $_model;
     protected $_view;
+    protected $_cache;
 
     /**
      * @var bool Specifies if the view should be rendered without header (std. false)
@@ -21,6 +22,8 @@ class Controller
      * @var bool Specifies if the view should be rendered. (std. true)
      */
     public $render;
+
+    public $cache;
 
     /**
      * Controller constructor.
@@ -57,7 +60,18 @@ class Controller
      */
     function __destruct() {
 		
-		if($this->render)
-			$this->_view->render($this->doNotRenderHeader);
+		if($this->render) {
+
+            if($this->cache) {
+
+               if(!$this->_cache->render()) {
+
+                    $content = $this->_view->render($this->doNotRenderHeader, true);
+                    $this->_cache->generate($content);
+                }
+                return;
+            }
+            $this->_view->render($this->doNotRenderHeader);
+        }
 	}
 }

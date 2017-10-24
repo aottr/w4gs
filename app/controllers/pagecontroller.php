@@ -22,6 +22,10 @@ class PageController extends Controller
      */
     function imprint() {
 
+    	$this->cache = FALSE;
+    	$this->_cache = new Cache($this->_controller . '_' . $this->_action);
+    	 
+
 		$storage = new JSONStorage();
 		$page_data = $storage->select("page", ["title" => "Imprint"]);
 

@@ -22,7 +22,7 @@ class View {
 	    $this->variables[$name] = $value;
     }
 
-    public function render($doNotRenderHeader = false) {
+    public function render($doNotRenderHeader = false, $return = false) {
     
     	if($this->variables != NULL)
     		extract($this->variables);

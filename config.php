@@ -4,7 +4,7 @@
 
 define ( 'DEVELOPMENT_ENVIRONMENT', TRUE );
 
-define('BASE_URL', '');
+define('BASE_URL', '/_pg11/');
 
 define( 'DB_TYPE', 'mysql' );
 define( 'DB_HOST', '' );

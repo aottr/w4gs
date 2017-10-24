@@ -20,7 +20,7 @@ class Cache
 
 	public function generate($content) {
 
-		return file_put_contents(CACHE_PATH . $this->_view, $content);
+		return file_put_contents(CACHE_PATH . $this->_view, base64_encode($content));
 	}
 
 	private function checkActuality() {
@@ -52,7 +52,7 @@ class Cache
 
 	public function render() {
 
-		if(!checkActuality())
+		if(!$this->checkActuality())
 			return false;
 
 		if (file_exists(CACHE_PATH . $this->_view)) {
@@ -61,7 +61,7 @@ class Cache
 			$output = ob_get_contents();
 
 			ob_end_clean();
-			echo $output;
+			echo base64_decode ($output);
 
 			return true;
 		}

@@ -64,12 +64,12 @@ class Controller
 
             if($this->cache) {
 
-               /* i(!$this->_cache->render()) {
+               if(!$this->_cache->render()) {
 
-                    //$content = $this->_view->render($this->doNotRenderHeader, true);
+                    $content = $this->_view->render($this->doNotRenderHeader, true);
                     $this->_cache->generate($content);
                 }
-                return;*/
+                return;
             }
             $this->_view->render($this->doNotRenderHeader);
         }

@@ -1,3 +1,4 @@
+<section class="fullwidth">
 <h2><?=$module['name']?> [<?=$module['abbr']?>]</h2>
 
 <p>
@@ -41,3 +42,4 @@ if(count($module['books'])) { ?>
 <p>
 	<a href="<?=BASE_URL?>university">Zur&uuml;ck</a>
 </p>
+</section>

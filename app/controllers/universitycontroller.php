@@ -18,6 +18,9 @@ class UniversityController extends Controller
 	 */
 	function index()
 	{
+		$this->cache = TRUE;
+    	$this->_cache = new Cache($this->_controller . '_' . $this->_action, ['university']);
+
 		$modules = $this->_storage->select('university', ['status' => 'active']);
 		$this->set('modules', $modules);
 	}
@@ -27,6 +30,9 @@ class UniversityController extends Controller
 	 * @param string $module module abbreviation
 	 */
 	function module($module = '') {
+
+		$this->cache = TRUE;
+    	$this->_cache = new Cache($this->_controller . '_' . $this->_action . '_' . $module, ['university']);
 
 		$module_data = $this->_storage->select('university', ['abbr' => $module]);
 

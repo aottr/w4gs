@@ -4,7 +4,7 @@
 
 define ( 'DEVELOPMENT_ENVIRONMENT', TRUE );
 
-define('BASE_URL', '');
+define('BASE_URL', '/_pg11/');
 define('CACHE_PATH', ROOT . DS . 'tmp' . DS . 'cache' . DS);
 define('JSONDB_PATH', ROOT . DS . 'app' . DS . 'db' . DS);
 

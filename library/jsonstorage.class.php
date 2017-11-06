@@ -97,6 +97,45 @@ class JSONStorage {
         return $this->assoc_array_to_json_object($object, $object_array);
     }
 
+    /**
+     * Uptates data to a given JSON Object. Filter via attributes.
+     * Error Codes:
+     *              64: Key not found
+     *              62: No Object found with given filter attributes
+     * @param string $object Name of the JSON Object
+     * @param array $attributes attributes for filtering
+     * @param mixed $key key of the value to update (first level in Entry)
+     * @param mixed $value value to insert
+     * @return boolean true if success, false if failure 
+     */ 
+    public function update($object, $attributes, $key, $value) {
+
+        $data = $this->select($object, $attributes);
+
+        if (count($data) > 0) {
+
+            $edited = false;
+            foreach ($data as $entry_key => $entry) {
+
+                foreach ($entry as $okey) {
+                    
+                    if($key === $okey) {
+                        $data[$entry_key][$key] = $value;
+                        $edited = true;
+                    }
+                }
+            }
+            if($edited) {
+
+                $this->assoc_array_to_json_object($object, $data);
+                return true;
+            }
+            exit(64); // Key not found
+        }
+        exit(62); // no object found
+        return false;
+    }
+
 
     /**
      * Private function to read json files and export the content into an assoc array

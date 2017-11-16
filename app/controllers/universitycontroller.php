@@ -34,14 +34,17 @@ class UniversityController extends Controller
 		$this->cache = TRUE;
     	$this->_cache = new Cache($this->_controller . '_' . $this->_action . '_' . $module, ['university']);
 
-		$module_data = $this->_storage->select('university', ['abbr' => $module]);
+    	if(!$this->_cache->valid()) {
 
-		if(!count($module_data) || empty($module)) {
+			$module_data = $this->_storage->select('university', ['abbr' => $module]);
 
-			header('Location: ' . BASE_URL . 'university');
-            exit(44);
+			if(!count($module_data) || empty($module)) {
+
+				header('Location: ' . BASE_URL . 'university');
+	            exit(44);
+			}
+
+			$this->set('module', $module_data);
 		}
-
-		$this->set('module', $module_data);
 	}
 }

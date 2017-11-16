@@ -16,6 +16,21 @@ class PageController extends Controller
 		$this->set("content", "Status OK");
 	}
 
+    function github() {
+
+        $this->cache = TRUE;
+        $this->_cache = new Cache($this->_controller . '_' . $this->_action); 
+
+        if(!$this->_cache->valid()) {
+
+            require_once ROOT . DS . 'utilities' . DS . 'GithubAPI.php';
+
+            $client = new GithubAPI('staubrein');
+            // save the assoc array
+            $this->set("repositories", $client->getRepositories());
+        }
+    }
+
     /**
      *  Generates an Imprint Page
      *  uses address data stored in a json db

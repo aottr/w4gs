@@ -10,7 +10,8 @@
     <header>
 	<nav>
 		<ul>
-			<li id="branding"><a href="#">Test2</a></li>
+			<li id="branding"><a href="<?=BASE_URL?>">r4nX</a></li>
+			<li><a href="<?=BASE_URL?>page/github">GitHub</a></li>
 			<li><a href="<?=BASE_URL?>university">University</a></li>
 		</ul>
 	</nav>

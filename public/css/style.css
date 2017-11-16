@@ -112,12 +112,18 @@ main {
 
 	background: #FEFEFE;
 	color:		#444444;
+	min-height: 300px;
 
     border: 	1px solid #CCCCCC;
     border-top: none;
     -moz-box-shadow: 0 3px 4px #CCCCCC;
     -webkit-box-shadow: 0 3px 4px #CCCCCC;
     box-shadow: 0 3px 4px #CCCCCC;
+}
+
+main h3 {
+
+	margin-top: 5px;
 }
 
 footer, footer a {
@@ -128,7 +134,36 @@ footer, footer a {
 	text-align: right;
 }
 
+.github_list {
 
+	padding: 	10px;
+}
+
+.github_list ul {
+
+	border: 	1px solid #CCCCCC;
+	border-radius: 3px;
+	list-style-type: none;
+	padding: 0;
+}
+
+.github_list ul li a {
+
+	padding: 	8px 10px;
+	display: 	block;
+}
+
+.github_list ul li a {
+
+	margin-top: -3px;
+	margin-bottom: -3px;
+}
+
+.github_list ul li a:hover {
+
+	background: #DDDDDD;
+	text-decoration: none;
+}
 
 
 @media screen and (max-width: 600px) {

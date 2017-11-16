@@ -8,13 +8,11 @@ class IndexController extends Controller
 		$this->set("content", "Status OK");
 	}
 
-	function github() {
+	function clearcache() {
 
-		require_once ROOT . DS . 'utilities' . DS . 'GithubAPI.php';
-
-		$client = new GithubAPI('staubrein');
-		// save the assoc array
-		$this->set("repositories", $client->getRepositories());
-
+		foreach (glob( CACHE_PATH .'*' ) as $file) {
+		    
+		    unlink($file);
+		}
 	}
 }

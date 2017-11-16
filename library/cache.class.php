@@ -12,7 +12,7 @@ class Cache
 	private $_view;
 	private $_objects;
 
-	function __construct($view, $objects)
+	function __construct($view, $objects = array())
 	{
 		$this->_view = $view;
 		$this->_objects = $objects;
@@ -21,6 +21,11 @@ class Cache
 	public function generate($content) {
 
 		return file_put_contents(CACHE_PATH . $this->_view, base64_encode($content));
+	}
+
+	public function valid() {
+
+		return $this->checkActuality();
 	}
 
 	private function checkActuality() {
@@ -43,7 +48,7 @@ class Cache
 
 		if (file_exists(CACHE_PATH . $this->_view)) {
 		    
-		    if(filemtime(CACHE_PATH . $this->_view) > $latest)
+		    if(filemtime(CACHE_PATH . $this->_view) > $latest || $latest == null)
 		    	return true;
 		}
 

@@ -10,6 +10,8 @@ class GithubAPI {
 	protected $_username;
 	protected $_jason_cache_path;
 
+	protected $_data;
+
 	/**
 	 * Create a new GithubAPI Client
 	 * @param string $username from Github
@@ -18,6 +20,32 @@ class GithubAPI {
 
 		$this->_username = $username;
 		$this->_jason_cache_path = NULL;
+		$this->_data = $this->getUserData();
+	}
+
+	public function getUsername() {
+
+		return $this->_data['login'];
+	}
+
+	public function getAvatar() {
+
+		return $this->_data['avatar_url'];
+	}
+
+	public function getName() {
+
+		return $this->_data['name'];
+	}
+
+	public function getBlog() {
+
+		return $this->_data['blog'];
+	}
+
+	public function getLocation() {
+
+		return $this->_data['location'];
 	}
 
 	/**
@@ -82,6 +110,23 @@ class GithubAPI {
 		}
 
 		return $repositories_assoc;
+	}
+
+	private function getUserData() {
+
+		// receive repository data and save as assoc array
+		$data_assoc = json_decode(
+
+				$this->curl_get(
+					'https://api.github.com/users/' . $this->_username, 
+					array(), 
+					array(
+						CURLOPT_USERAGENT => $this->_username
+					)
+				),
+				true
+			);
+		return $data_assoc;
 	}
 
 	/**

@@ -2,7 +2,7 @@
 	<section class="column c50">
 		<h1>GitHub</h1>
 		<p>
-			Visit me on <a href="https://github.com/staubrein">GitHub</a>.
+			<img src="<?=$avatar_url?>" alt="GitHub Avatar" />
 		</p>
 	</section>
 	<section class="column c50 github_list">

@@ -28,6 +28,7 @@ class PageController extends Controller
             $client = new GithubAPI('staubrein');
             // save the assoc array
             $this->set("repositories", $client->getRepositories());
+            $this->set("avatar_url", $client->getAvatar());
         }
     }
 

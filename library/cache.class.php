@@ -50,6 +50,14 @@ class Cache
 		return false;
 	}
 
+	public function clear() {
+
+		foreach (glob( CACHE_PATH .'*' ) as $file) {
+		    
+		    unlink($file);
+		}
+	}
+
 	public function render() {
 
 		if(!$this->checkActuality())

@@ -9,8 +9,8 @@
  */
 class Cache
 {
-	private $view;
-	private $objects;
+	protected $view;
+	protected $objects;
 
 	function __construct($view, $objects = array())
 	{
@@ -28,7 +28,7 @@ class Cache
 		return $this->checkActuality();
 	}
 
-	private function checkActuality() {
+	protected function checkActuality() {
 
 		$latest = null;
 

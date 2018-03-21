@@ -7,11 +7,11 @@
 class Controller
 {
 
-    protected $_controller;
-    protected $_action;
-    protected $_model;
-    protected $_view;
-    protected $_cache;
+    protected $controller;
+    protected $action;
+    protected $model;
+    protected $view;
+    protected $cache;
 
     /**
      * @var bool Specifies if the view should be rendered without header (std. false)
@@ -23,7 +23,7 @@ class Controller
      */
     public $render;
 
-    public $cache;
+    public $caching;
 
     /**
      * Controller constructor.
@@ -35,13 +35,13 @@ class Controller
      */
     function __construct($controller, $action)
 	{
-		$this->_controller = $controller;
-		$this->_action = $action;
+		$this->controller = $controller;
+		$this->action = $action;
 		
 		$this->doNotRenderHeader = FALSE;
 		$this->render = TRUE;
 		
-		$this->_view = new View($controller, $action);
+		$this->view = new View($controller, $action);
 	}
 
     /**
@@ -52,7 +52,7 @@ class Controller
      */
     function set($name, $value) {
 		
-		$this->_view->set($name, $value);
+		$this->view->set($name, $value);
 	}
 
     /**
@@ -62,16 +62,16 @@ class Controller
 		
 		if($this->render) {
 
-            if($this->cache) {
+            if($this->caching) {
 
-               if(!$this->_cache->render()) {
+               if(!$this->cache->render()) {
 
-                    $content = $this->_view->render($this->doNotRenderHeader, true);
-                    $this->_cache->generate($content);
+                    $content = $this->view->render($this->doNotRenderHeader, true);
+                    $this->cache->generate($content);
                 }
                 return;
             }
-            $this->_view->render($this->doNotRenderHeader);
+            $this->view->render($this->doNotRenderHeader);
         }
 	}
 }

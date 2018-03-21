@@ -9,7 +9,7 @@
  */
 class JSONStorage {
 
-    protected $_path;
+    protected $path;
 
     /**
      * JSONStorage constructor.
@@ -17,7 +17,7 @@ class JSONStorage {
      */
     public function __construct() {
         
-       $this->_path = JSONDB_PATH;
+       $this->path = JSONDB_PATH;
     }
 
 
@@ -28,7 +28,7 @@ class JSONStorage {
     public function setPath($path) {
 
         // adds the Directory Separator at the end of the path if not present
-        $this->_path = substr($path, -1) == DS ? $path : $path . DS;
+        $this->path = substr($path, -1) == DS ? $path : $path . DS;
     }
 
     /**
@@ -150,10 +150,10 @@ class JSONStorage {
         if($extension != 'json')
             $object .= '.json';
 
-        if(!file_exists($this->_path . $object))
+        if(!file_exists($this->path . $object))
             return [];
         
-        return json_decode(file_get_contents( $this->_path . $object), true);
+        return json_decode(file_get_contents( $this->path . $object), true);
     }
 
     /**
@@ -170,7 +170,7 @@ class JSONStorage {
         if($extension != 'json')
             $object .= '.json';
 
-        return file_put_contents($this->_path . $object, json_encode($data));
+        return file_put_contents($this->path . $object, json_encode($data));
     }
 
 }

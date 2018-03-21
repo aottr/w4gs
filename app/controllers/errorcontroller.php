@@ -13,13 +13,12 @@ class ErrorController extends Controller {
      * Generates a Error 404 Page
      * @param bool $real Flag to ensure an internal run of the controller
      */
-    function __construct($real = false) {
+    function index($real = false) {
+
         if (!$real)
-            header('Location: ' . BASE_URL . 'index');
+            header('Location: ' . BASE_URL);
 
-        $this->_view->title = 'Error 404!';
-        $this->_view->msg = 'This page does not exist.';
-        $this->_view->render('error/index');
+        $this->set($title, 'Error 404!');
+        $this->set($msg, 'This page does not exist.');
     }
-
 }

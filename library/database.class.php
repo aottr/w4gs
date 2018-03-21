@@ -76,7 +76,7 @@ class Database extends PDO {
         $fieldDetails = null;
 
         foreach ($data as $key => $value) {
-            $fieldDetails .= '`$key`=:$key, ';
+            $fieldDetails .= "`$key`=:$key, ";
         }
         $fieldDetails = rtrim($fieldDetails, ',');
 

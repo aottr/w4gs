@@ -1,4 +1,4 @@
 <div>
-    <h1><?php echo $this->title; ?></h1>
-    <p><?php echo $this->msg; ?></p>
+    <h1><?php echo $title; ?></h1>
+    <p><?php echo $msg; ?></p>
 </div>

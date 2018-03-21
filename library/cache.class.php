@@ -9,25 +9,30 @@
  */
 class Cache
 {
-	private $_view;
-	private $_objects;
+	private $view;
+	private $objects;
 
-	function __construct($view, $objects)
+	function __construct($view, $objects = array())
 	{
-		$this->_view = $view;
-		$this->_objects = $objects;
+		$this->view = $view;
+		$this->objects = $objects;
 	}
 
 	public function generate($content) {
 
-		return file_put_contents(CACHE_PATH . $this->_view, base64_encode($content));
+		return file_put_contents(CACHE_PATH . $this->view, base64_encode($content));
+	}
+
+	public function valid() {
+
+		return $this->checkActuality();
 	}
 
 	private function checkActuality() {
 
 		$latest = null;
 
-		foreach ($this->_objects as $object) {
+		foreach ($this->objects as $object) {
 
 			$extension = array_values(array_slice(preg_split('/\./', $object), -1))[0];
         
@@ -41,9 +46,9 @@ class Cache
 			}
 		}
 
-		if (file_exists(CACHE_PATH . $this->_view)) {
+		if (file_exists(CACHE_PATH . $this->view)) {
 		    
-		    if(filemtime(CACHE_PATH . $this->_view) > $latest)
+		    if(filemtime(CACHE_PATH . $this->view) > $latest || $latest == null)
 		    	return true;
 		}
 
@@ -63,9 +68,9 @@ class Cache
 		if(!$this->checkActuality())
 			return false;
 
-		if (file_exists(CACHE_PATH . $this->_view)) {
+		if (file_exists(CACHE_PATH . $this->view)) {
 			ob_start();
-			require_once CACHE_PATH . $this->_view;
+			require_once CACHE_PATH . $this->view;
 			$output = ob_get_contents();
 
 			ob_end_clean();

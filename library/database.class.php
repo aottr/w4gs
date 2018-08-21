@@ -60,7 +60,7 @@ class Database extends PDO {
         foreach ($data as $key => $value) {
             $sth->bindValue($key, $value);
         }
-        $sth->execute();
+        return $sth->execute();
     }
 
     /**
@@ -76,7 +76,7 @@ class Database extends PDO {
         $fieldDetails = null;
 
         foreach ($data as $key => $value) {
-            $fieldDetails .= "`$key`=:$key, ";
+            $fieldDetails .= "`$key`=:$key,";
         }
         $fieldDetails = rtrim($fieldDetails, ',');
 
@@ -85,7 +85,7 @@ class Database extends PDO {
         foreach ($data as $key => $value) {
             $sth->bindValue(":$key", $value);
         }
-        $sth->execute();
+        return $sth->execute();
     }
     
     /**
@@ -97,7 +97,7 @@ class Database extends PDO {
      */
     public function delete($table, $where, $limit = 1) {
         
-        return $this->exec("DELETE FROM $table WHERE $where LIMIT $limit");
+        return $this->exec("DELETE FROM " . DB_PREF . "$table WHERE $where LIMIT $limit");
     }
 
 }
